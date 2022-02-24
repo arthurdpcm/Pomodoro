@@ -22,11 +22,6 @@ function Counter() {
     
   }, [secondsAmount]);
 
-  const handleReset = () => {
-    console.log(secondsAmount)
-    clearTimeout();
-    setSecondsAmount(secondsAmount);
-  }
 
   const minutes = Math.floor(secondsAmount / 60);
   const seconds = secondsAmount % 60;
@@ -36,7 +31,7 @@ function Counter() {
       <header className="App-header">
         
         <span>{String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</span>
-        <button className="button" onClick={()=>{handleReset()}}>
+        <button className="button" onClick={()=>window.location.reload(false)}>
           Reset
         </button>
         
