@@ -1,31 +1,32 @@
 import React, { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import './App.css'
 
 const COUNTDOWN_INITIAL_TIME = 25*60;
 
-function App() {
+function Counter() {
   const [secondsAmount, setSecondsAmount] = useState(COUNTDOWN_INITIAL_TIME) // 25 minutes;
-  const timer = setTimeout(() => {
-    setSecondsAmount(secondsAmount - 1)
-  }, 1000)
-  // setSecondsAmount(COUNTDOWN_INITIAL_TIME)
+  const navigate = useNavigate();
+
   useEffect(()=>{
     if (secondsAmount === 0) {
       alert("Chegou ao fim!")
       return;
     }
 
-    timer;
+    setTimeout(() => {
+      setSecondsAmount(state => state -1)
+    }, 1000)
      
     
   }, [secondsAmount]);
 
   const handleReset = () => {
-    clearTimeout(timer);
-    setSecondsAmount(COUNTDOWN_INITIAL_TIME);
-    
+    console.log(secondsAmount)
+    clearTimeout();
+    setSecondsAmount(secondsAmount);
   }
-
 
   const minutes = Math.floor(secondsAmount / 60);
   const seconds = secondsAmount % 60;
@@ -44,4 +45,4 @@ function App() {
   )
 }
 
-export default App
+export default Counter
