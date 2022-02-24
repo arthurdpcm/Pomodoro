@@ -5,7 +5,9 @@ const COUNTDOWN_INITIAL_TIME = 25*60;
 
 function App() {
   const [secondsAmount, setSecondsAmount] = useState(COUNTDOWN_INITIAL_TIME) // 25 minutes;
-  
+  const timer = setTimeout(() => {
+    setSecondsAmount(secondsAmount - 1)
+  }, 1000)
   // setSecondsAmount(COUNTDOWN_INITIAL_TIME)
   useEffect(()=>{
     if (secondsAmount === 0) {
@@ -13,14 +15,15 @@ function App() {
       return;
     }
 
-    setTimeout(() => {
-      setSecondsAmount(secondsAmount - 1)
-    }, 1000)
+    timer;
+     
     
   }, [secondsAmount]);
 
   const handleReset = () => {
+    clearTimeout(timer);
     setSecondsAmount(COUNTDOWN_INITIAL_TIME);
+    
   }
 
 
