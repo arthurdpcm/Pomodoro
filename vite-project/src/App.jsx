@@ -92,7 +92,7 @@ function App() {
             return sessionLength;
           }
         });
-      }, 1); // TODO; turn back into 1000ms
+      }, 1000); // TODO; turn back into 1000ms
       setIntervalId(newIntervalId);
     }
   };
